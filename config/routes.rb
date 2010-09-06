@@ -1,4 +1,8 @@
 Lab01PhotoAlbum::Application.routes.draw do
+  resources :photos
+
+  resources :albums
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
