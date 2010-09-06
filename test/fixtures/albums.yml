@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  title: title1
+  description: title1 description
+
+two:
+  id: 2
+  title: title2
+  description: title2 description
