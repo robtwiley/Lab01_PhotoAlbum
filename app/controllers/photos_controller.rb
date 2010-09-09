@@ -1,4 +1,11 @@
 class PhotosController < ApplicationController
+	
+   before_filter :load_album
+   
+   def load_album
+      @album = Album.find params[:album_id]
+   end 
+	
   # GET /photos
   # GET /photos.xml
   def index
@@ -40,11 +47,13 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.xml
   def create
-    @photo = Photo.new(params[:photo])
+    ###@photo = Photo.new(params[:photo])
+    @photo = @album.photos.build(params[:photo])
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to(@photo, :notice => 'Photo was successfully created.') }
+        ###format.html { redirect_to(@photo, :notice => 'Photo was successfully created.') }
+	format.html { redirect_to([@album,@photo], :notice => 'Photo was successfully created.') }
         format.xml  { render :xml => @photo, :status => :created, :location => @photo }
       else
         format.html { render :action => "new" }
@@ -60,7 +69,8 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
-        format.html { redirect_to(@photo, :notice => 'Photo was successfully updated.') }
+        ###format.html { redirect_to(@photo, :notice => 'Photo was successfully updated.') }
+	format.html { redirect_to([@album,@photo], :notice => 'Photo was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -76,7 +86,7 @@ class PhotosController < ApplicationController
     @photo.destroy
 
     respond_to do |format|
-      format.html { redirect_to(photos_url) }
+      format.html { redirect_to(album_photos_url(@album)) }
       format.xml  { head :ok }
     end
   end

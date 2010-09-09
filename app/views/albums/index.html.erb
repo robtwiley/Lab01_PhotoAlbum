@@ -1,25 +1,27 @@
-<h1>Listing albums</h1>
+<h1>Photo Albums</h1>
+
+<p><i>Click album name to view/manage contents or <%= link_to 'Add a new photo album', new_album_path %></i></p>
 
 <table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
+  <!-- tr>
+    <th>Album Title</th>
+    <!-- th>Description</th -->
+    <!-- th></th -->
     <th></th>
     <th></th>
-    <th></th>
-  </tr>
+  </tr -->
 
 <% @albums.each do |album| %>
   <tr>
-    <td><%= album.title %></td>
-    <td><%= album.description %></td>
-    <td><%= link_to 'Show', album %></td>
+    <!-- td><%= album.title %></td -->
+    <td><%= link_to album.title, album_photos_path(album), { :title => album.description } %></td>
+    <!-- td><%= album.description %></td -->
+    <!-- td><%= link_to 'Show', album_photos_path(album) %></td>
     <td><%= link_to 'Edit', edit_album_path(album) %></td>
-    <td><%= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete %></td -->
   </tr>
 <% end %>
 </table>
 
-<br />
 
-<%= link_to 'New Album', new_album_path %>
+

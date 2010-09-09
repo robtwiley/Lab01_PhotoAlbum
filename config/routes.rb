@@ -1,7 +1,7 @@
 Lab01PhotoAlbum::Application.routes.draw do
-  resources :photos
+  ###resources :photos
 
-  resources :albums
+  ###resources :albums
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -34,6 +34,10 @@ Lab01PhotoAlbum::Application.routes.draw do
   #     resources :comments, :sales
   #     resource :seller
   #   end
+  
+    resources :albums do
+	resources :photos
+    end
 
   # Sample resource route with more complex sub-resources
   #   resources :products do
@@ -53,6 +57,7 @@ Lab01PhotoAlbum::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
+  root :to => "albums#index"
 
   # See how all your routes lay out with "rake routes"
 

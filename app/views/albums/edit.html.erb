@@ -1,6 +1,6 @@
-<h1>Editing album</h1>
+<h1>Editing "<%= @album.title.capitalize %>" Album</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @album %> |
-<%= link_to 'Back', albums_path %>
+<!-- %= link_to 'Show', album_photos_path(@album) % -->
+<%= link_to 'Back to Photo Album', album_photos_path(@album) %>
