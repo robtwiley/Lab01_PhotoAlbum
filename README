@@ -1,3 +1,15 @@
 == Rails II, Lab #1, Photo Album 
-== Robert Wiley, 08/29/2010
+== Rails II, Lab #2, Extends Photo Album with User Authorization and Authentication
+
+== Robert Wiley, 09/26/2010
+
+== Site uses:
+	authlogic for User authentication (logging in)
+	declarative_authorization for User authorization (rights to site functionality)
+	
+
+== Yet to do:
+	Unit testing for user, role
+	Functional testing for user, role, authorization and authentication
+
 

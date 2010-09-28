@@ -1,11 +1,23 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0.rc'
+gem 'rails', '3.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', '1.3.1', :require => 'sqlite3'
+
+# Authlogic for web site authentication
+# Note have to use this to create the user_session model
+#  Put this in your Gemfile:
+#     gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
+#  Run this at command line:
+#      rails g authlogic:session user_session
+#
+gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3' 
+
+# declarative_authorization for web site role-based authorization
+gem 'declarative_authorization', :git => 'git://github.com/stffn/declarative_authorization'
 
 # Use unicorn as the web server
 # gem 'unicorn'

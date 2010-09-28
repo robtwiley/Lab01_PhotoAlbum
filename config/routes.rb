@@ -1,4 +1,12 @@
 Lab01PhotoAlbum::Application.routes.draw do
+  resources :user_sessions
+  match 'login', :to => 'user_sessions#new', :as => "login"
+  match 'logout', :to => 'user_sessions#destroy', :as => "logout"
+
+  resources :roles
+
+  resources :users
+
   ###resources :photos
 
   ###resources :albums
