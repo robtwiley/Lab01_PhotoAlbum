@@ -1,4 +1,9 @@
 class UserSessionsController < ApplicationController
+  
+  #Method from declarative_authorization to identify access to 
+  #functionality.  Uses config/authorization_rules.rb to know access rights.
+  filter_resource_access
+
   # GET /user_sessions
   # GET /user_sessions.xml
   def index
@@ -13,7 +18,8 @@ class UserSessionsController < ApplicationController
   # GET /user_sessions/1
   # GET /user_sessions/1.xml
   def show
-    @user_session = UserSession.find(params[:id])
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+	###@user_session = UserSession.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +30,8 @@ class UserSessionsController < ApplicationController
   # GET /user_sessions/new
   # GET /user_sessions/new.xml
   def new
-    @user_session = UserSession.new
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+	###@user_session = UserSession.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +41,16 @@ class UserSessionsController < ApplicationController
 
   # GET /user_sessions/1/edit
   def edit
-    @user_session = UserSession.find(params[:id])
+    	# User authlogic current_user helper method in Application controller
+	    #@user_session = UserSession.find(params[:id])
+		###@user_session = current_user
   end
 
   # POST /user_sessions
   # POST /user_sessions.xml
   def create
-    @user_session = UserSession.new(params[:user_session])
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+	###@user_session = UserSession.new(params[:user_session])
 
     respond_to do |format|
       if @user_session.save
@@ -56,7 +66,8 @@ class UserSessionsController < ApplicationController
   # PUT /user_sessions/1
   # PUT /user_sessions/1.xml
   def update
-    @user_session = UserSession.find(params[:id])
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+	###@user_session = UserSession.find(params[:id])
 
     respond_to do |format|
       if @user_session.update_attributes(params[:user_session])
@@ -72,7 +83,8 @@ class UserSessionsController < ApplicationController
   # DELETE /user_sessions/1
   # DELETE /user_sessions/1.xml
   def destroy
-    @user_session = UserSession.find(params[:id])
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+	###@user_session = UserSession.find(params[:id])
     @user_session.destroy
 
     respond_to do |format|

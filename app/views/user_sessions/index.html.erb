@@ -1,21 +1,38 @@
 <h1>Listing user_sessions</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<p id="notice"><%= notice %></p>
 
+<table>
+
+<%	header_row = false %>
 <% @user_sessions.each do |user_session| %>
+  <% if !header_row %>
+    <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    </tr>
+  <% header_row = true %>
+  <% end %>
   <tr>
-    <td><%= link_to 'Show', user_session %></td>
-    <td><%= link_to 'Edit', edit_user_session_path(user_session) %></td>
-    <td><%= link_to 'Destroy', user_session, :confirm => 'Are you sure?', :method => :delete %></td>
+  	<%# permitted_to? method part of declarative_authorization %>
+	<% if permitted_to? :show, user_session %>
+		<td><%= link_to 'Show', user_session %></td>
+	<% end %>
+	<% if permitted_to? :edit, user_session %>
+		<td><%= link_to 'Edit', edit_user_session_path(user_session) %></td>
+	<% end %>
+	<% if permitted_to? :destroy, user_session %>
+		<td><%= link_to 'Destroy', user_session, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New User session', new_user_session_path %>
+
+<%# permitted_to? method part of declarative_authorization %>
+<% if permitted_to? :create, UserSession.new %>
+	<%= link_to 'New User session', new_user_session_path %>
+<% end %>

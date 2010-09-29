@@ -3,13 +3,25 @@
 
 == Robert Wiley, 09/26/2010
 
-== Site uses:
+== Site uses these gems/libraries:
 	authlogic for User authentication (logging in)
 	declarative_authorization for User authorization (rights to site functionality)
-	
+
+== Test users:
+
+		Username		Password	 Role
+		========		========	 ====
+		admin			test		 Administrator
+		mod				test		 Moderator
+		user			test		 User
 
 == Yet to do:
+    Finish adding 'if' conditions around edit, destroy, etc.
+	Set up menu bar to display user name
+	Set up menu bar to show options for Users, Roles when Admin
 	Unit testing for user, role
 	Functional testing for user, role, authorization and authentication
+	   user/mod/admin can logout, etc.
 
-
+== Questions:
+    

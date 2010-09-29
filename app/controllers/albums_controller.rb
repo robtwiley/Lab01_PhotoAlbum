@@ -1,4 +1,9 @@
 class AlbumsController < ApplicationController
+
+   #Method from declarative_authorization to identify access to 
+   #functionality.  Uses config/authorization_rules.rb to know access rights.
+   filter_resource_access
+
   # GET /albums
   # GET /albums.xml
   def index
@@ -13,7 +18,8 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.xml
   def show
-    @album = Album.find(params[:id])
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+	###@album = Album.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +30,8 @@ class AlbumsController < ApplicationController
   # GET /albums/new
   # GET /albums/new.xml
   def new
-    @album = Album.new
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+    ###@album = Album.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,18 +41,20 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
-    @album = Album.find(params[:id])
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+    ###@album = Album.find(params[:id])
   end
 
   # POST /albums
   # POST /albums.xml
   def create
-    @album = Album.new(params[:album])
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+    ###@album = Album.new(params[:album])
 
     respond_to do |format|
       if @album.save
         ###format.html { redirect_to(@album, :notice => 'Album was successfully created.') }
-	format.html { redirect_to(album_photos_url(@album), :notice => 'Album was successfully created.') }
+	    format.html { redirect_to(album_photos_url(@album), :notice => 'Album was successfully created.') }
         format.xml  { render :xml => @album, :status => :created, :location => @album }
       else
         format.html { render :action => "new" }
@@ -57,12 +66,13 @@ class AlbumsController < ApplicationController
   # PUT /albums/1
   # PUT /albums/1.xml
   def update
-    @album = Album.find(params[:id])
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+    ###@album = Album.find(params[:id])
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
         ###format.html { redirect_to(@album, :notice => 'Album was successfully updated.') }
-	format.html { redirect_to(album_photos_url(@album), :notice => 'Album was successfully updated.') }
+	    format.html { redirect_to(album_photos_url(@album), :notice => 'Album was successfully updated.') }
 	
         format.xml  { head :ok }
       else
@@ -75,7 +85,8 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1
   # DELETE /albums/1.xml
   def destroy
-    @album = Album.find(params[:id])
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+	###@album = Album.find(params[:id])
     @album.destroy
 
     respond_to do |format|

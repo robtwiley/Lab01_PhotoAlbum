@@ -1,4 +1,9 @@
 class RolesController < ApplicationController
+
+  #Method from declarative_authorization to identify access to 
+  #functionality.  Uses config/authorization_rules.rb to know access rights.
+  filter_resource_access
+
   # GET /roles
   # GET /roles.xml
   def index

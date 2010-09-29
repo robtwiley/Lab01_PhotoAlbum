@@ -1,5 +1,9 @@
 class PhotosController < ApplicationController
 	
+   #Method from declarative_authorization to identify access to 
+   #functionality.  Uses config/authorization_rules.rb to know access rights.
+   filter_resource_access
+   
    before_filter :load_album
    
    def load_album
@@ -20,7 +24,8 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.xml
   def show
-    @photo = Photo.find(params[:id])
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+	###@photo = Photo.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,7 +36,8 @@ class PhotosController < ApplicationController
   # GET /photos/new
   # GET /photos/new.xml
   def new
-    @photo = Photo.new
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+	###@photo = Photo.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,14 +47,16 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
-    @photo = Photo.find(params[:id])
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+	###@photo = Photo.find(params[:id])
   end
 
   # POST /photos
   # POST /photos.xml
   def create
     ###@photo = Photo.new(params[:photo])
-    @photo = @album.photos.build(params[:photo])
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+	###@photo = @album.photos.build(params[:photo])
 
     respond_to do |format|
       if @photo.save
@@ -65,7 +73,8 @@ class PhotosController < ApplicationController
   # PUT /photos/1
   # PUT /photos/1.xml
   def update
-    @photo = Photo.find(params[:id])
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+	###@photo = Photo.find(params[:id])
 
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
@@ -82,7 +91,8 @@ class PhotosController < ApplicationController
   # DELETE /photos/1
   # DELETE /photos/1.xml
   def destroy
-    @photo = Photo.find(params[:id])
+    ###Access handled through declarative_authorization's before_filter in application_controller.rb
+	###@photo = Photo.find(params[:id])
     @photo.destroy
 
     respond_to do |format|

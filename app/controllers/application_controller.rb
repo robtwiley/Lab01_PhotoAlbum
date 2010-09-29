@@ -2,6 +2,14 @@ class ApplicationController < ActionController::Base
     
     protect_from_forgery
 	
+	#Needed for declarative_authorization and uses config\authorization_rules.rb to determine user's role access rights
+	before_filter { |c| Authorization.current_user = c.current_user }
+
+	#Method for declarative_authorization when no authorization to perform a task
+	def permission_denied
+		redirect_to( root_url, :notice => 'Sorry, you are not allowed to access that page.' )
+	end
+	
 	#Usersession methods from authlogic
 	helper_method :current_user
   

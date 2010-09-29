@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-
-<%= link_to 'Edit', edit_user_session_path(@user_session) %> |
+<% if permitted_to? :edit, @user_session %>
+	<%= link_to 'Edit', edit_user_session_path(@user_session) %> |
+<% end %>
 <%= link_to 'Back', user_sessions_path %>
