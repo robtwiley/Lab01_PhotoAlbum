@@ -2,4 +2,6 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Back', user_sessions_path %>
+<% if permitted_to? :index, @user_session %>
+   	<%= link_to 'View User Sessions', user_sessions_path %>
+<% end %>

@@ -3,16 +3,27 @@
 <p><i>Click image to manage photo or <%= link_to 'Add a new photo to this album', new_album_photo_path(@album) %></i></p>
 
 <table>
-  <!-- tr>
-    <th></th>
-    <th>Location</th>
-    <th>Title</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr -->
 
+<% header_row = false %>
 <% @album.photos.each do |photo| %>
+  <% if !header_row %>
+	  <!-- tr>
+	    <th></th>
+	    <th>Location</th>
+	    <th>Title</th>
+	    <% if permitted_to? :show, photo %>
+	       <th></th>
+	    <% end %>
+	   <% if permitted_to? :edit, photo %>
+	       <th></th>
+	    <% end %>
+	    <% if permitted_to? :destroy, photo %>	
+	       <th></th>
+	    <% end %>    
+	  </tr -->
+	  <% header_row = true %>
+  <% end %> 
+
   <tr>
     <td align="center">
       <!-- img src="<%= "/#{photo.location.gsub("\\","/")}" %>" width="40" height="40" / -->
@@ -24,15 +35,28 @@
   </tr>
   <!-- tr>
     <td align="center">
-      <%= link_to 'Show', [@album,photo] %> |
-      <%= link_to 'Edit', edit_album_photo_path(@album,photo) %> |
-      <%= link_to 'Destroy', [@album,photo], :confirm => 'Are you sure?', :method => :delete %>
+        <% if permitted_to? :show, photo %>
+    	   <%= link_to 'Show', [@album,photo] %> |
+        <% end %>
+        <% if permitted_to? :edit, photo %>
+    	   <%= link_to 'Edit', edit_album_photo_path(@album,photo) %> |
+        <% end %>
+        <% if permitted_to? :destroy, photo %>	
+    	   <%= link_to 'Destroy', [@album,photo], :confirm => 'Are you sure?', :method => :delete %>
+        <% end %>
      </td>
   </tr -->
+  
+  
+  
 <% end %>
 </table>
 
 <br />
-<%= link_to 'Edit Photo Album', edit_album_path(@album) %> |
-<%= link_to 'Destroy Photo Album', @album, :confirm => 'Are you sure?', :method => :delete %>
+<% if permitted_to? :edit, @album %>
+  <%= link_to 'Edit Photo Album', edit_album_path(@album) %> |
+<% end %>
+<% if permitted_to? :destroy, @album %>
+  <%= link_to 'Destroy Photo Album', @album, :confirm => 'Are you sure?', :method => :delete %>
+<% end %>
 

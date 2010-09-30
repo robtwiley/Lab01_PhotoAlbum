@@ -14,7 +14,14 @@
   <%= @photo.title %>
 </p>
 
-     
-<%= link_to 'Edit', edit_album_photo_path(@album,@photo) %> |
-<%= link_to 'Destroy', [@album, @photo], :confirm => 'Are you sure?', :method => :delete %> |
-<%= link_to 'Back to Album', album_photos_path(@album) %>
+<% if permitted_to? :edit, @photo %>
+	<%= link_to 'Edit', edit_album_photo_path(@album,@photo) %> |
+<% end %>
+<% if permitted_to? :destroy, @photo %>	
+  <%= link_to 'Destroy', [@album, @photo], :confirm => 'Are you sure?', :method => :delete %> |
+<% end %>     
+<% if permitted_to? :show, @album %>
+  <%= link_to 'Back to Album', album_photos_path(@album) %>
+<% end %>
+
+

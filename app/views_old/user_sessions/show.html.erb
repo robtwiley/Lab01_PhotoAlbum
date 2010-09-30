@@ -3,6 +3,4 @@
 <% if permitted_to? :edit, @user_session %>
 	<%= link_to 'Edit', edit_user_session_path(@user_session) %> |
 <% end %>
-<% if permitted_to? :index, @user_session %>
-   	<%= link_to 'View User Sessions', user_sessions_path %>
-<% end %>
+<%= link_to 'Back', user_sessions_path %>

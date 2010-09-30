@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= image_tag("/#{@photo.location.gsub("\\","/")}", { :align => 'absmiddle', :border => 0, :size => '200x200', :alt => @photo.title, :title => @photo.title }) %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @photo.location %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @photo.title %>
+</p>
+
+     
+<%= link_to 'Edit', edit_album_photo_path(@album,@photo) %> |
+<%= link_to 'Destroy', [@album, @photo], :confirm => 'Are you sure?', :method => :delete %> |
+<%= link_to 'Back to Album', album_photos_path(@album) %>

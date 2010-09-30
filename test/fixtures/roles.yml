@@ -1,9 +1,16 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
-  description: MyText
+  id: 1
+  name: Administrator
+  description: Admin does everything
 
 two:
-  name: MyString
-  description: MyText
+  id: 2
+  name: Moderator
+  description: Moderator does a little more
+  
+three:
+  id: 3
+  name: User
+  description: User doesn't do much at all

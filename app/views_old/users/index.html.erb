@@ -3,7 +3,7 @@
 <p id="notice"><%= notice %></p>
 
 <table>
-<% header_row = false %>
+<%	header_row = false %>
 <% @users.each do |user| %>
   <% if !header_row %>
     <tr>
@@ -32,16 +32,16 @@
     <!-- td><%= user.crypted_password %></td>
     <td><%= user.password_salt %></td>
     <td><%= user.persistence_token %></td -->
-    <%# permitted_to? method part of declarative_authorization %>
-    <% if permitted_to? :show, user %>
-	<td><%= link_to 'Show', user %></td>
-    <% end %>
-    <% if permitted_to? :edit, user %>
-	<td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <% end %>
-    <% if permitted_to? :destroy, user %>	
-	<td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
-     <% end %>
+	<%# permitted_to? method part of declarative_authorization %>
+	<% if permitted_to? :show, user %>
+		<td><%= link_to 'Show', user %></td>
+	<% end %>
+	<% if permitted_to? :edit, user %>
+		<td><%= link_to 'Edit', edit_user_path(user) %></td>
+	<% end %>
+	<% if permitted_to? :destroy, user %>	
+		<td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end %>
 
   </tr>
 <% end %>

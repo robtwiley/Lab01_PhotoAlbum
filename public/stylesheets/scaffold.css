@@ -63,3 +63,7 @@ body {
   float: right;
   font-size: 12px;
 }
+
+#flash_notice {
+  color: blue;
+}

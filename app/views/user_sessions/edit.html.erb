@@ -2,5 +2,10 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @user_session %> |
-<%= link_to 'Back', user_sessions_path %>
+<% if permitted_to? :show, @user_session %>
+	<%= link_to 'Show', @user_session %> 
+<% end %>
+<% if permitted_to? :index, @user_session %>
+   	<%= link_to 'View User Sessions', user_sessions_path %>
+<% end %>
+

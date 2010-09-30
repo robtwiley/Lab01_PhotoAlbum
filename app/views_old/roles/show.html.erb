@@ -1,4 +1,4 @@
-<!-- p id="notice"><%#= notice %></p -->
+<p id="notice"><%= notice %></p>
 
 <p>
   <b>Name:</b>
@@ -12,7 +12,5 @@
 
 <% if permitted_to? :edit, @role %>
 	<%= link_to 'Edit', edit_role_path(@role) %> |
-<% end %>
-<% if permitted_to? :index, @role %>
-	<%= link_to 'List Roles', roles_path %>
-<% end %>
+<% end %>	
+<%= link_to 'Back', roles_path %>

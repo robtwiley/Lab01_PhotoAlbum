@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Role:</b>
+  <%= @user.role.name %>
+</p>
+
+<p>
+  <b>Username:</b>
+  <%= @user.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<!-- p>
+  <b>Crypted password:</b>
+  <%= @user.crypted_password %>
+</p>
+
+<p>
+  <b>Password salt:</b>
+  <%= @user.password_salt %>
+</p>
+
+<p>
+  <b>Persistence token:</b>
+  <%= @user.persistence_token %>
+</p -->
+
+<%# permitted_to? method part of declarative_authorization %>
+<% if permitted_to? :edit, @user %>
+	<%= link_to 'Edit', edit_user_path(@user) %> |
+<% end %>
+<% if permitted_to? :index, @user %>
+	<%= link_to 'List Users', users_path %>
+<% end %>	

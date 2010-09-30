@@ -1,25 +1,46 @@
 <h1>Listing roles</h1>
 
 <table>
+
+<% header_row = false %>
+<% @roles.each do |role| %>
+  <% if !header_row %>
+	  <tr>
+	      <th>Name</th>
+	      <th>Description</th>
+		<% if permitted_to? :show, role %>
+			<th></th>
+		<% end %>
+		<% if permitted_to? :edit, role%>
+			<th></th>
+		<% end %>
+		<% if permitted_to? :destroy, role %>
+			<th></th>
+		<% end %>
+		<% header_row = true %>
+	  </tr>
+  <% end %>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    	<td><%= role.name %></td>
+    	<td><%= role.description %></td>
+	<% if permitted_to? :show, role %>
+	   <td><%= link_to 'Show', role %></td>
+	<% end %>
+	<% if permitted_to? :edit, role%>
+	   <td><%= link_to 'Edit', edit_role_path(role) %></td>
+	<% end %>
+	<% if permitted_to? :destroy, role %>
+	   <td><%= link_to 'Destroy', role, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end %>
   </tr>
 
-<% @roles.each do |role| %>
-  <tr>
-    <td><%= role.name %></td>
-    <td><%= role.description %></td>
-    <td><%= link_to 'Show', role %></td>
-    <td><%= link_to 'Edit', edit_role_path(role) %></td>
-    <td><%= link_to 'Destroy', role, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Role', new_role_path %>
+<%# permitted_to? method part of declarative_authorization %>
+<% if permitted_to? :create, Role.new %>
+	<%= link_to 'New Role', new_role_path %>
+<% end %>
+

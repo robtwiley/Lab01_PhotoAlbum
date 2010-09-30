@@ -1,7 +1,6 @@
 <h1>Editing photo</h1>
 
 <%= render 'form' %>
-<% if permitted_to? :show, @album %>
-  <%= link_to 'Show Photo', [@album,@photo] %> 
-<% end %>
+
+<%= link_to 'Back to Photo Display', [@album,@photo] %> 
 <!-- %= link_to 'Back', album_photos_path(@album) % -->

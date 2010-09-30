@@ -1,0 +1,38 @@
+<h1>Photos from "<%= @album.title.capitalize %>" Album</h1>
+
+<p><i>Click image to manage photo or <%= link_to 'Add a new photo to this album', new_album_photo_path(@album) %></i></p>
+
+<table>
+  <!-- tr>
+    <th></th>
+    <th>Location</th>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr -->
+
+<% @album.photos.each do |photo| %>
+  <tr>
+    <td align="center">
+      <!-- img src="<%= "/#{photo.location.gsub("\\","/")}" %>" width="40" height="40" / -->
+      <%= link_to image_tag("/#{photo.location.gsub("\\","/")}", { :align => 'absmiddle', :border => 0, :size => '30x30', :alt => photo.title, :title => photo.title }), [@album,photo] %>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" style="font-size:x-small"><%= photo.title %></td>
+  </tr>
+  <!-- tr>
+    <td align="center">
+      <%= link_to 'Show', [@album,photo] %> |
+      <%= link_to 'Edit', edit_album_photo_path(@album,photo) %> |
+      <%= link_to 'Destroy', [@album,photo], :confirm => 'Are you sure?', :method => :delete %>
+     </td>
+  </tr -->
+<% end %>
+</table>
+
+<br />
+<%= link_to 'Edit Photo Album', edit_album_path(@album) %> |
+<%= link_to 'Destroy Photo Album', @album, :confirm => 'Are you sure?', :method => :delete %>
+

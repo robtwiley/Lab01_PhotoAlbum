@@ -3,22 +3,38 @@
 <p><i>Click album name to view/manage contents or <%= link_to 'Add a new photo album', new_album_path %></i></p>
 
 <table>
-  <!-- tr>
-    <th>Album Title</th>
-    <!-- th>Description</th -->
-    <!-- th></th -->
-    <th></th>
-    <th></th>
-  </tr -->
-
+<% header_row = false %>
 <% @albums.each do |album| %>
+
+
+  <% if !header_row %>
+    <tr>
+      <th>Album Title</th>
+      <!-- th>Description</th -->
+      <!-- th></th -->
+      <!-- th></th -->
+      <!-- th></th -->
+      <% header_row = true %>
+    </tr>
+  <% end %>
+
   <tr>
+    
     <!-- td><%= album.title %></td -->
     <td><%= link_to album.title, album_photos_path(album), { :title => album.description } %></td>
+    
     <!-- td><%= album.description %></td -->
-    <!-- td><%= link_to 'Show', album_photos_path(album) %></td>
-    <td><%= link_to 'Edit', edit_album_path(album) %></td>
-    <td><%= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete %></td -->
+    
+    <% if permitted_to? :show, album %>
+    	<!-- td><%= link_to 'Show', album_photos_path(album) %></td -->
+    <% end %>
+    <% if permitted_to? :edit, album %>
+    	<!-- td><%= link_to 'Edit', edit_album_path(album) %></td -->
+    <% end %>
+    <% if permitted_to? :destroy, album %>	
+    	<!-- td><%= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete %></td -->
+    <% end %>
+    
   </tr>
 <% end %>
 </table>

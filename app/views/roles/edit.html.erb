@@ -2,5 +2,8 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @role %> |
-<%= link_to 'Back', roles_path %>
+<%= link_to 'Show', @role %> 
+|<% if permitted_to? :index, @role %>
+	<%= link_to 'List Roles', roles_path %>
+<% end %>
+

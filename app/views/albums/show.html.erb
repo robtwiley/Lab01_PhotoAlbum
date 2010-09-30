@@ -11,6 +11,17 @@
 </p>
 
 
-<%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Destroy', @album, :confirm => 'Are you sure?', :method => :delete %> |
-<%= link_to 'Back', albums_path %>
+<%# permitted_to? method part of declarative_authorization %>
+<% if permitted_to? :edit, @album %>
+	<%= link_to 'Edit', edit_album_path(@album) %> |
+<% end %>
+<% if permitted_to? :destroy, @album %>	
+	<%= link_to 'Destroy', @album, :confirm => 'Are you sure?', :method => :delete %> |
+<% end %>
+<% if permitted_to? :index, @album %>
+	<%= link_to 'List Albums', albums_path %>
+<% end %>
+
+
+
+

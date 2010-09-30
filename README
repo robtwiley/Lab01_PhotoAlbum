@@ -16,12 +16,10 @@
 		user			test		 User
 
 == Yet to do:
-    Finish adding 'if' conditions around edit, destroy, etc.
-	Set up menu bar to display user name
-	Set up menu bar to show options for Users, Roles when Admin
 	Unit testing for user, role
 	Functional testing for user, role, authorization and authentication
 	   user/mod/admin can logout, etc.
 
 == Questions:
-    
+    1) Need to see how to test user_sessions
+	

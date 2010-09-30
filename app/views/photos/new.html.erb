@@ -2,4 +2,8 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Back', album_photos_path(@album) %>
+
+<% if permitted_to? :show, @album %>
+   <%= link_to 'View Album', album_photos_path(@album) %>
+<% end %>
+

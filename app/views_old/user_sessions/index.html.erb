@@ -4,20 +4,13 @@
 
 <table>
 
-<% header_row = false %>
+<%	header_row = false %>
 <% @user_sessions.each do |user_session| %>
   <% if !header_row %>
     <tr>
-	<% if permitted_to? :show, user_session %>
-		<th></th>
-	<% end %>
-	<% if permitted_to? :edit, user_session %>
-		<th></th>
-	<% end %>
-	<% if permitted_to? :destroy, user_session %>
-		<th></th>
-	<% end %>
-	<% header_row = true %>
+    <th></th>
+    <th></th>
+    <th></th>
     </tr>
   <% header_row = true %>
   <% end %>

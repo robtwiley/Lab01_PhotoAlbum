@@ -1,17 +1,25 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  role: 
-  username: MyString
-  email: MyString
+  role_id: 1
+  username: admin1
+  email: admin1@cox.net
   crypted_password: MyString
   password_salt: MyString
   persistence_token: MyString
 
 two:
-  role: 
-  username: MyString
-  email: MyString
+  role_id: 2
+  username: mod1
+  email: mod1@cox.net
+  crypted_password: MyString
+  password_salt: MyString
+  persistence_token: MyString
+  
+three:
+  role_id: 3
+  username: user1
+  email: user1@cox.net
   crypted_password: MyString
   password_salt: MyString
   persistence_token: MyString
